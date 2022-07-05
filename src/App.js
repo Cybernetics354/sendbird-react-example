@@ -4,8 +4,8 @@ import { App as SendBirdApp } from "sendbird-uikit";
 import "sendbird-uikit/dist/index.css";
 
 function App() {
-  const appID = "7FE9002E-FFA4-4221-8910-1853B799B934";
-  const accessToken = "0dcefdae1ee72e9a8cf3349adcde49bc946fe2c4";
+  const appID = process.env.REACT_APP_SENDBIRD_APP_ID;
+  const accessToken = process.env.REACT_APP_SENDBIRD_ACCESS_TOKEN;
   const [id, setID] = useState("");
 
   useEffect(() => {
