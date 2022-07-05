@@ -7,7 +7,7 @@ const routes = [
     component: Login,
   },
   {
-    path: 'chat',
+    path: 'dashboard',
     component: Dashboard,
   }
 ]
