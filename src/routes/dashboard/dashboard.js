@@ -16,7 +16,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="dashboard">
       <SendBirdApp appId={appID} userId={id} accessToken={accessToken} />
     </div>
   );

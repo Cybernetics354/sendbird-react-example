@@ -11,7 +11,7 @@ export default function Login() {
   }
 
   function navigateToDashboard() {
-    navigate(`/chat?id=${userID}`, { replace: true });
+    navigate(`/dashboard?id=${userID}`, { replace: true });
   }
 
   return (
