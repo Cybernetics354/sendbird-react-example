@@ -4,14 +4,22 @@ import "./login.scss";
 
 export default function Login() {
   const [userID, setUserID] = useState("");
+  const [appID, setAppID] = useState("");
+  const [accessToken, setAccessToken] = useState("");
   const navigate = useNavigate();
 
-  function onInputChange(text) {
-    setUserID(text.target.value);
+  function onInputChange(text, setter) {
+    setter(text.target.value);
   }
 
   function navigateToDashboard() {
-    navigate(`/dashboard?id=${userID}`, { replace: true });
+    let url = '/dashboard';
+
+    url += `?id=${userID}`;
+    url += `&appID=${appID}`;
+    url += `&accessToken=${accessToken}`;
+
+    navigate(url, { replace: true });
   }
 
   return (
@@ -20,7 +28,19 @@ export default function Login() {
         type="text"
         placeholder="Masukkan User ID"
         value={userID}
-        onChange={onInputChange}
+        onChange={(text) => onInputChange(text, setUserID)}
+      />
+      <input
+        type="text"
+        placeholder="Masukkan App ID"
+        value={appID}
+        onChange={(text) => onInputChange(text, setAppID)}
+      />
+      <input
+        type="text"
+        placeholder="Masukkan Access Token"
+        value={accessToken}
+        onChange={(text) => onInputChange(text, setAccessToken)}
       />
       <input type="submit" value="Masuk" />
     </form>
