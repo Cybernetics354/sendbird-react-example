@@ -10,9 +10,11 @@ function App() {
 
   return (
     <BrowserRouter>
+      
       <Routes>
         {routeList.map((e) => <Route path={e.path} element={<e.component />} key={e.path} />)}
       </Routes>
+
     </BrowserRouter>
   );
 }
