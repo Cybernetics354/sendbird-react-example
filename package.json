@@ -12,7 +12,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "sendbird-uikit": "^2.7.1",
+    "sendbird-uikit": "https://github.com/Cybernetics354/sendbird-uikit-react.git",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
