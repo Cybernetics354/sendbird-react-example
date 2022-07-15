@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { App as SendBirdApp } from "sendbird-uikit";
-import "sendbird-uikit/dist/index.css";
+import sendFileToS3 from "../../utils/sendFileToS3";
+import "./sendbird.css";
 import "./dashboard.scss";
 
 export default function Dashboard() {
@@ -22,9 +23,14 @@ export default function Dashboard() {
     }
   }, []);
 
+  async function uploadImage(file) {
+    const images = await sendFileToS3(file);
+    return images.medium;
+  }
+
   return (
     <div className="dashboard">
-      <SendBirdApp appId={appID} userId={id} accessToken={accessToken} />
+      <SendBirdApp appId={appID} userId={id} accessToken={accessToken} onFilePicked={uploadImage} />
     </div>
   );
 }
