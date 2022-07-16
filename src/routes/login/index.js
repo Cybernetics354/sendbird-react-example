@@ -5,6 +5,7 @@ import "./login.scss";
 export default function Login() {
   const [userID, setUserID] = useState("");
   const [accessToken, setAccessToken] = useState("");
+  const [userToken, setUserToken] = useState("");
 
   const navigate = useNavigate();
 
@@ -27,15 +28,21 @@ export default function Login() {
     <form className="login" onSubmit={navigateToDashboard}>
       <input
         type="text"
-        placeholder="Masukkan User ID"
+        placeholder="User ID"
         value={userID}
         onChange={(value) => onInputChange(value, setUserID)}
       />
       <input
         type="text"
-        placeholder="Masukkan Access Token"
+        placeholder="Access Token"
         value={accessToken}
         onChange={(value) => onInputChange(value, setAccessToken)}
+      />
+      <input
+        type="text"
+        placeholder="User Token"
+        value={userToken}
+        onChange={(value) => onInputChange(value, setUserToken)}
       />
       <input type="submit" value="Masuk" />
     </form>

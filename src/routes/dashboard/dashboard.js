@@ -7,9 +7,11 @@ import "./dashboard.scss";
 export default function Dashboard() {
   const appID = process.env.REACT_APP_SENDBIRD_APP_ID;
   const defaultAccessToken = process.env.REACT_APP_SENDBIRD_ACCESS_TOKEN;
+  const bucketUrl = process.env.REACT_APP_BUCKET_URL;
 
   const [id, setID] = useState("");
   const [accessToken, setAccessToken] = useState(defaultAccessToken);
+  const [userToken, setUserToken] = useState('');
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -18,19 +20,24 @@ export default function Dashboard() {
     setID(_id);
     
     const _accessToken = params.get("accessToken");
-    if(_accessToken) {
+    const _userToken = params.get("userToken");
+    if (_accessToken) {
       setAccessToken(_accessToken);
+    }
+
+    if (_userToken) {
+      setUserToken(_userToken);
     }
   }, []);
 
   async function uploadImage(file) {
-    const images = await sendFileToS3(file);
+    const images = await sendFileToS3(file, userToken);
     return images.medium;
   }
 
   return (
     <div className="dashboard">
-      <SendBirdApp appId={appID} userId={id} accessToken={accessToken} onFilePicked={uploadImage} />
+      <SendBirdApp appId={appID} userId={id} accessToken={accessToken} onFilePicked={uploadImage} externalBucketUrl={bucketUrl} />
     </div>
   );
 }
