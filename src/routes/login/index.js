@@ -21,6 +21,10 @@ export default function Login() {
       url += `&accessToken=${accessToken}`;
     }
 
+    if (userToken) {
+      url += `&userToken=${userToken}`;
+    }
+
     navigate(url, { replace: true });
   }
 
