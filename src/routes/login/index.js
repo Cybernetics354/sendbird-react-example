@@ -22,7 +22,7 @@ export default function Login() {
     }
 
     if (userToken) {
-      url += `&userToken=${userToken}`;
+      url += `&personal_access_token=${userToken}`;
     }
 
     navigate(url, { replace: true });

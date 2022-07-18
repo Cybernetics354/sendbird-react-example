@@ -20,7 +20,9 @@ export default function Dashboard() {
     setID(_id);
     
     const _accessToken = params.get("accessToken");
-    const _userToken = params.get("userToken");
+    const _userToken = params.get("personal_access_token");
+
+    console.log(_userToken);
     if (_accessToken) {
       setAccessToken(_accessToken);
     }
