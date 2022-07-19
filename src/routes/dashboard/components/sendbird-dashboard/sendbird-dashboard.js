@@ -2,7 +2,7 @@ import { App as SendBirdApp } from "sendbird-uikit";
 import { Transition } from "react-transition-group";
 
 export default function SendbirdDashboard(props) {
-  const { appID, userID, accessToken, onFilePicked, bucketUrl, isReady } =
+  const { appID, userID, accessToken, onFilePicked, externalBucketUrl, isReady } =
     props;
 
   const defaultStyle = {
@@ -35,7 +35,7 @@ export default function SendbirdDashboard(props) {
             userId={userID}
             accessToken={accessToken}
             onFilePicked={onFilePicked}
-            externalBucketUrl={bucketUrl}
+            externalBucketUrl={externalBucketUrl}
           />
         </div>
       )}
