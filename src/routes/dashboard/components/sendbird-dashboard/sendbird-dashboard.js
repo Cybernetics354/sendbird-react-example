@@ -36,6 +36,13 @@ export default function SendbirdDashboard(props) {
             accessToken={accessToken}
             onFilePicked={onFilePicked}
             externalBucketUrl={externalBucketUrl}
+            colorSet={{
+              '--sendbird-light-primary-500': '#98570C',
+              '--sendbird-light-primary-400': '#B27B32',
+              '--sendbird-light-primary-300': '#CC9E58',
+              '--sendbird-light-primary-200': '#E6C17E',
+              '--sendbird-light-primary-100': '#FFE4A4',
+            }}
           />
         </div>
       )}

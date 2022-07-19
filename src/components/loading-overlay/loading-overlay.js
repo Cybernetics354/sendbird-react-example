@@ -16,7 +16,7 @@ export default function LoadingOverlay(props) {
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
-    transition: `all 700ms ease`,
+    transition: `all 1s ease`,
     backgroundColor: 'black',
     transform: 'scale(1)',
   };
@@ -37,9 +37,12 @@ export default function LoadingOverlay(props) {
             ...transitionStyles[state],
           }}
         >
+          <h1 style={{
+            fontFamily: "Montserrat"
+          }}>Golds Seller Chat</h1>
           <Loader style={{
-            width: 30,
-            height: 30,
+            width: 20,
+            height: 20,
           }} />
         </div>
       )}
