@@ -5,7 +5,7 @@ export default function LoadingOverlay(props) {
   const { showOverlay } = props;
 
   const defaultStyle = {
-    position: 'absolute',
+    position: 'fixed',
     top: 0,
     bottom: 0,
     left: 0,
@@ -16,15 +16,16 @@ export default function LoadingOverlay(props) {
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
-    transition: `opacity 400ms ease`,
-    backgroundColor: 'orange',
+    transition: `all 700ms ease`,
+    backgroundColor: 'black',
+    transform: 'scale(1)',
   };
 
   const transitionStyles = {
     entering: { opacity: 1 },
     entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0, zIndex: -999 },
+    exiting: { opacity: 0, transform: 'scale(1.7)' },
+    exited: { opacity: 0, zIndex: -999, transform: 'scale(1.7)' },
   };
 
   return (
