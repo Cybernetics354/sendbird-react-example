@@ -9,7 +9,7 @@ export default async function sendFileToS3(file, accessToken) {
   const endPointUrl = '/sendbird/upload';
 
   const response = await axios.post(baseUrl + endPointUrl, formData, {headers: {
-    'Authorization': `Bearer ${accessToken}`
+    'Authorization': `Bearer ${accessToken}`,
   }})
 
   return response.data.data;
