@@ -24,7 +24,7 @@ export default function LoadingOverlay(props) {
     entering: { opacity: 1 },
     entered: { opacity: 1 },
     exiting: { opacity: 0 },
-    exited: { opacity: 0 },
+    exited: { opacity: 0, zIndex: -999 },
   };
 
   return (
@@ -36,7 +36,10 @@ export default function LoadingOverlay(props) {
             ...transitionStyles[state],
           }}
         >
-          <Loader />
+          <Loader style={{
+            width: 30,
+            height: 30,
+          }} />
         </div>
       )}
     </Transition>
