@@ -3,15 +3,16 @@ import { toast } from "react-toastify";
 import sendFileToS3 from "../../utils/sendFileToS3";
 import SendbirdDashboard from "./components/sendbird-dashboard";
 import LoadingOverlay from "../../components/loading-overlay";
+import SendbirdConfigurationProvider from "../../context/sendbird-configuration-provider";
+
 import "./sendbird.css";
 import "./dashboard.scss";
+import sendbirdConf from "../../sendbird.conf";
 
 export default function Dashboard() {
-  const appID = process.env.REACT_APP_SENDBIRD_APP_ID;
   const defaultAccessToken = process.env.REACT_APP_SENDBIRD_ACCESS_TOKEN;
-  const bucketUrl = process.env.REACT_APP_BUCKET_URL;
 
-  const [id, setID] = useState("");
+  const [userID, setID] = useState("");
   const [accessToken, setAccessToken] = useState(defaultAccessToken);
   const [userToken, setUserToken] = useState("");
   const [isReady, setIsReady] = useState(false);
@@ -36,7 +37,7 @@ export default function Dashboard() {
     setTimeout(() => setIsReady(true), 2000);
   }, []);
 
-  async function uploadImage(file) {
+  async function onFilePicked(file) {
     let images;
     await toast.promise(
       async () => {
@@ -49,19 +50,20 @@ export default function Dashboard() {
       }
     );
 
-    return images.medium;
+    return images.large;
   }
 
   return (
     <div className="dashboard">
-      <SendbirdDashboard
-        appID={appID}
-        userID={id}
-        accessToken={accessToken}
-        externalBucketUrl={bucketUrl}
-        onFilePicked={uploadImage}
-        isReady={isReady}
-      />
+      <SendbirdConfigurationProvider configuration={{
+        userID,
+        accessToken,
+        onFilePicked,
+        isReady,
+        ...sendbirdConf,
+      }}>
+        <SendbirdDashboard />
+      </SendbirdConfigurationProvider>
       <LoadingOverlay showOverlay={!isReady} />
     </div>
   );

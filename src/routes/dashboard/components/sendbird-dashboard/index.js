@@ -1,1 +1,1 @@
-export { default } from './sendbird-dashboard';
+export { default } from './SendbirdDashboard';

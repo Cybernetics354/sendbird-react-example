@@ -1,9 +1,10 @@
 import { App as SendBirdApp } from "sendbird-uikit";
 import { Transition } from "react-transition-group";
+import { useSendbirdConfigurationContext } from "../../../../context/sendbird-configuration-provider";
 
-export default function SendbirdDashboard(props) {
+export default function SendbirdDashboard() {
   const { appID, userID, accessToken, onFilePicked, externalBucketUrl, isReady } =
-    props;
+    useSendbirdConfigurationContext();
 
   const defaultStyle = {
     transition: `all 700ms ease`,
