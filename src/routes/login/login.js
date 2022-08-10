@@ -30,26 +30,50 @@ export default function Login() {
 
   return (
     <form className="login" onSubmit={navigateToDashboard}>
-      <input
-        type="text"
-        placeholder="User ID"
-        value={userID}
-        onChange={(value) => onInputChange(value, setUserID)}
-      />
-      <input
-        type="text"
-        placeholder="Access Token"
-        value={accessToken}
-        onChange={(value) => onInputChange(value, setAccessToken)}
-      />
-      <input
-        type="text"
-        placeholder="User Token"
-        value={userToken}
-        onChange={(value) => onInputChange(value, setUserToken)}
-      />
-      <input type="submit" value="Masuk" />
+      <div className="login--section">
+        <Title>Sendbird Credentials</Title>
+        <Form
+          title="Sendbird User ID"
+          placeholder="User ID"
+          value={userID}
+          onChange={(value) => onInputChange(value, setUserID)}
+        />
+        <Form
+          title="Sendbird Access Token"
+          placeholder="Access Token"
+          value={accessToken}
+          onChange={(value) => onInputChange(value, setAccessToken)}
+        />
+      </div>
+      <div className="login--section">
+        <Title>Backend Credentials</Title>
+        <Form
+          title="Personal Access Token"
+          placeholder="Personal Access Token"
+          value={userToken}
+          onChange={(value) => onInputChange(value, setUserToken)}
+        />
+      </div>
+      <input className="login--button" type="submit" value="Masuk" />
     </form>
   );
 }
 
+function Title({ children }) {
+  return <h4 className="login--section-title">{children}</h4>;
+}
+
+function Form({ title, placeholder, value, onChange }) {
+  return (
+    <>
+      <p className="login--section-form-title">{title}</p>
+      <input
+        className="login--section-form"
+        type="text"
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    </>
+  );
+}
