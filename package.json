@@ -16,7 +16,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.6",
     "react-transition-group": "^4.4.2",
-    "sendbird-uikit": "Cybernetics354/sendbird-uikit-react-1",
+    "sendbird-uikit": "Cybernetics354/sendbird-uikit-react-1#feature/multiple-bucket",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

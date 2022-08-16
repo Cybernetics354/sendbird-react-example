@@ -7801,9 +7801,9 @@ send@0.18.0:
     range-parser "~1.2.1"
     statuses "2.0.1"
 
-sendbird-uikit@Cybernetics354/sendbird-uikit-react-1:
+sendbird-uikit@Cybernetics354/sendbird-uikit-react-1#feature/multiple-bucket:
   version "3.0.0"
-  resolved "https://codeload.github.com/Cybernetics354/sendbird-uikit-react-1/tar.gz/d751ca5387b9b10fa6f4ee281acde0c55ee293da"
+  resolved "https://codeload.github.com/Cybernetics354/sendbird-uikit-react-1/tar.gz/771416621a88eabae68b44a451a23ddc8ced9a1c"
   dependencies:
     "@sendbird/chat" "^4.0.4"
     css-vars-ponyfill "^2.3.2"

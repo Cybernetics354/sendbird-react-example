@@ -33,11 +33,19 @@ export default function Dashboard() {
     if (_userToken) {
       setUserToken(_userToken);
     }
-    
+
     setTimeout(() => setIsReady(true), 2000);
   }, []);
 
   async function onFilePicked(file) {
+    const hasNoToken =
+      userToken === undefined || userToken === null || userToken.length <= 0;
+    if (hasNoToken) {
+      return {
+        type: "upload-to-sendbird",
+      };
+    }
+
     let images;
     await toast.promise(
       async () => {
@@ -50,18 +58,20 @@ export default function Dashboard() {
       }
     );
 
-    return images.large;
+    return { type: "message", message: images.large };
   }
 
   return (
     <div className="dashboard">
-      <SendbirdConfigurationProvider configuration={{
-        userID,
-        accessToken,
-        onFilePicked,
-        isReady,
-        ...sendbirdConf,
-      }}>
+      <SendbirdConfigurationProvider
+        configuration={{
+          userID,
+          accessToken,
+          onFilePicked,
+          isReady,
+          ...sendbirdConf,
+        }}
+      >
         <SendbirdDashboard />
       </SendbirdConfigurationProvider>
       <LoadingOverlay showOverlay={!isReady} />
