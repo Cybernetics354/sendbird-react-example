@@ -1,6 +1,7 @@
 import { App as SendBirdApp } from "sendbird-uikit";
 import { Transition } from "react-transition-group";
 import { useSendbirdConfigurationContext } from "../../../../context/sendbird-configuration-provider";
+import JsonRenderer from "../../../../components/jsonrenderer";
 
 export default function SendbirdDashboard() {
   const { appID, userID, accessToken, onFilePicked, externalBucketUrl, isReady } =
@@ -37,6 +38,22 @@ export default function SendbirdDashboard() {
             accessToken={accessToken}
             onFilePicked={onFilePicked}
             externalBucketUrl={externalBucketUrl}
+            renderCustomMessage={(props) => {
+              const { message } = props;
+              const { message: messageContent } = message;
+    
+              if (!messageContent) {
+                return null;
+              }
+    
+              try {
+                const parsed = JSON.parse(messageContent);
+
+                return <JsonRenderer {...parsed} />
+              } catch (e) {
+                return null;
+              }
+            }}
             colorSet={{
               '--sendbird-light-primary-500': '#98570C',
               '--sendbird-light-primary-400': '#B27B32',
