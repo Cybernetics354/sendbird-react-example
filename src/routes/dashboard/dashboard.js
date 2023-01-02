@@ -8,33 +8,39 @@ import SendbirdConfigurationProvider from "../../context/sendbird-configuration-
 import "./sendbird.css";
 import "./dashboard.scss";
 import sendbirdConf from "../../sendbird.conf";
+import { getSendbirdConfigurations } from "../../utils/sendbird";
 
 export default function Dashboard() {
   const defaultAccessToken = process.env.REACT_APP_SENDBIRD_ACCESS_TOKEN;
 
   const [userID, setID] = useState("");
   const [accessToken, setAccessToken] = useState(defaultAccessToken);
+  const [appID, setAppID] = useState("");
   const [userToken, setUserToken] = useState("");
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
-    const _id = params.get("id");
-    setID(_id);
+    async function setupCredentials() {
+      const _userToken = params.get("personal_access_token");
+      const _id = params.get("id");
+      const config = await getSendbirdConfigurations(_id);
 
-    const _accessToken = params.get("accessToken");
-    const _userToken = params.get("personal_access_token");
+      const { userID, appID, sessionToken } = config;
 
-    if (_accessToken) {
-      setAccessToken(_accessToken);
+      if (_userToken) {
+        setUserToken(_userToken);
+      }
+
+      setAppID(appID);
+      setID(userID);
+      setAccessToken(sessionToken);
+
+      setTimeout(() => setIsReady(true), 2000);
     }
 
-    if (_userToken) {
-      setUserToken(_userToken);
-    }
-
-    setTimeout(() => setIsReady(true), 2000);
+    setupCredentials();
   }, []);
 
   async function onFilePicked(file) {
@@ -70,6 +76,7 @@ export default function Dashboard() {
           onFilePicked,
           isReady,
           ...sendbirdConf,
+          appID,
         }}
       >
         <SendbirdDashboard />
