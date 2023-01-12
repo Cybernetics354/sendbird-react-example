@@ -32,7 +32,7 @@ export default function SendbirdDashboard() {
             ...transitionStyles[state],
           }}
         >
-          <SendBirdApp
+          {isReady && <SendBirdApp
             appId={appID}
             userId={userID}
             accessToken={accessToken}
@@ -61,7 +61,7 @@ export default function SendbirdDashboard() {
               '--sendbird-light-primary-200': '#E6C17E',
               '--sendbird-light-primary-100': '#FFE4A4',
             }}
-          />
+          />}
         </div>
       )}
     </Transition>
