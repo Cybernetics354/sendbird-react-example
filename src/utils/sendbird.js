@@ -5,12 +5,13 @@ import SHA512 from "crypto-js/sha512";
 const baseURL = `${process.env.REACT_APP_PIKACHU_URL}/api/v8.0/sendbird/login`
 const secretKey = process.env.REACT_APP_SECRET_KEY;
 
-export async function getSendbirdConfigurations(userID) {
+export async function getSendbirdConfigurations(userID, key) {
   const hashedKey = encBase64.stringify(SHA512(userID + secretKey));
 
   const response = await axios.get(`${baseURL}/${userID}`, {
     headers: {
-      'Key': hashedKey
+      'Key': hashedKey,
+      'Authorization': `Bearer ${key}`
     },
   });
 

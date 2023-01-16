@@ -7869,9 +7869,9 @@ send@0.18.0:
     range-parser "~1.2.1"
     statuses "2.0.1"
 
-sendbird-uikit@Cybernetics354/sendbird-uikit-react-1#feature/channel-title:
+sendbird-uikit@Cybernetics354/sendbird-uikit-react-1#feature/add-channel:
   version "3.0.0"
-  resolved "https://codeload.github.com/Cybernetics354/sendbird-uikit-react-1/tar.gz/e0b164980e67837375d9d937a9fa4f6bb2971e45"
+  resolved "https://codeload.github.com/Cybernetics354/sendbird-uikit-react-1/tar.gz/f8ef49aaab95471bf34a68114e600eba0665aee0"
   dependencies:
     "@sendbird/chat" "^4.0.4"
     css-vars-ponyfill "^2.3.2"

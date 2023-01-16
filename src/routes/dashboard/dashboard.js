@@ -25,7 +25,8 @@ export default function Dashboard() {
     async function setupCredentials() {
       const _userToken = params.get("personal_access_token");
       const _id = params.get("id");
-      const config = await getSendbirdConfigurations(_id);
+      const _key = params.get("key");
+      const config = await getSendbirdConfigurations(_id, _key);
 
       const { userID, appID, sessionToken } = config;
 
