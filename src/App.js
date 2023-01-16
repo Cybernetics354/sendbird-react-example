@@ -16,7 +16,6 @@ function App() {
         {routeList.map((e) => <Route path={e.path} element={<e.component />} key={e.path} />)}
       </Routes>
       <ToastContainer />
-
     </BrowserRouter>
   );
 }
